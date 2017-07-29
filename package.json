@@ -1,4 +1,16 @@
 {
   "name": "",
-  "version": ""
+  "version": "",
+  "dependencies": {
+    "blueimp-md5": "^2.8.0",
+    "body-parser": "^1.17.2",
+    "bootstrap": "^3.3.7",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "express-session": "^1.15.4",
+    "fs": "0.0.1-security",
+    "jquery": "^3.2.1",
+    "mysql": "^2.14.0",
+    "path": "^0.12.7"
+  }
 }
