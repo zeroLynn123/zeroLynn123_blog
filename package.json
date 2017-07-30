@@ -1,6 +1,14 @@
 {
-  "name": "",
-  "version": "",
+  "name": "heimablog_0728",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "blueimp-md5": "^2.8.0",
     "body-parser": "^1.17.2",
@@ -8,9 +16,9 @@
     "ejs": "^2.5.6",
     "express": "^4.15.3",
     "express-session": "^1.15.4",
-    "fs": "0.0.1-security",
     "jquery": "^3.2.1",
-    "mysql": "^2.14.0",
-    "path": "^0.12.7"
+    "mditor": "^1.2.9",
+    "moment": "^2.18.1",
+    "mysql": "^2.14.0"
   }
 }

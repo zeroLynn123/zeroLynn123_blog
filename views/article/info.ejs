@@ -1,0 +1,29 @@
+<%- include('../layout/header.ejs') %>
+
+    <div class="container-fluid">
+        <h3 style="text-align:center;font-weight:600;">
+            <%= article.title %>
+
+                <% if(islogin && user.id === article.authorId){ %>
+                    <a href="/article/edit?id=<%= article.id %>" class="btn btn-info pull-right">编辑此文章</a>
+                    <% } %>
+
+        </h3>
+
+        <p style="color:#999; font-size:12px;">
+            <strong>作者昵称：</strong>
+            <%= article.nickname %>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <strong>发表时间：</strong>
+                <%= article.ctime %>
+        </p>
+
+        <hr>
+
+
+        <div class="content">
+            <%- article.content %>
+        </div>
+    </div>
+
+    <%- include('../layout/footer.ejs') %>

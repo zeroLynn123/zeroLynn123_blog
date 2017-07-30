@@ -1,64 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('./layout/header.ejs') %>
+    <div class="container-fluid">
+        <h3 style="font-weight:600;">文章列表</h3>
+        <hr>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>登录首页</title>
-    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-</head>
+        <ul class="list-group">
+            <% list.forEach(item => { %>
+                <li class="list-group-item">
+                    <span class="badge" style="background-color:#5bc0de;">
+            <strong>发表时间：</strong><%= item.ctime %>
+          </span>
+                    <span class="badge" style="background-color:#f0ad4e;">
+            <strong>作者昵称：</strong><%= item.nickname %>
+          </span>
+                    <a href="/article/info?id=<%= item.id %>">
+                        <%= item.title %>
+                    </a>
+                </li>
+                <% }) %>
+        </ul>
 
-
-<body>
-    <!--登录首页-->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">zero_Lynn博客</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <% if(!islogin){ %>
-                    <!--登录和注册按钮  -->
-                    <div class="navbar-form navbar-right">
-                        <a href="/register" class="btn btn-success">注册</a>
-                        <a href="/login" class="btn btn-primary">登录</a>
-                    </div>
-                    <% } else { %>
-                        <div class="navbar-form navbar-right">
-                            <a href="" class="btn btn-warning">欢迎 <strong><%= user.nickname %></strong></a>
-                            <a href="/logout" class="btn btn-danger">注销</a>
-                        </div>
-
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">发表 <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">文章</a></li>
-                                    <li><a href="#">问题</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <% } %>
-            </div>
-        </div>
-    </nav>
-
-    <h1>文章列表</h1>
-
-
-    <div class="footer " style="color:#999;font-size:14px;text-align:center; ">
-        <p>zero·Lynn_blog &copy; 201707</p>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="/?page=<%= nowPage === 1 ? 1 : nowPage-1 %>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <% for(var i=0; i < totalPage; i++){ %>
+                    <li class="<%= nowPage === (i+1) ? 'active' : '' %>">
+                        <a href="/?page=<%= i+1 %>">
+                            <%= i+1 %>
+                        </a>
+                    </li>
+                    <% } %>
+                        <li>
+                            <a href="/?page=<%= nowPage === totalPage? totalPage : nowPage+1 %>" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+            </ul>
+        </nav>
     </div>
-</body>
 
-</html>
+
+    <%- include('./layout/footer.ejs') %>

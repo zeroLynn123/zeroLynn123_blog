@@ -14,8 +14,9 @@
             margin-top: 100px;
         }
         
-        h1 {
+        h3 {
             text-align: center;
+            font-weight: 600;
         }
         
         input[type='submit'] {
@@ -26,7 +27,7 @@
 
 <body>
     <form id="form">
-        <h1>注册页面</h1>
+        <h3>注册页面</h3>
         <div class="form-group">
             <input type="text" name="username" id="username" class="form-control input-lg" placeholder="用户名" required>
         </div>
@@ -45,28 +46,27 @@
     </form>
 
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('#form').on('submit', function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: '/register',
+                    data: $(this).serialize(),
+                    type: 'post',
+                    dataType: 'json',
+                    success: function(results) {
+                        if (results.err_code === 0) {
+                            location.href = '/login';
+                        } else {
+                            alert(results.msg);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
-<script src="/node_modules/jquery/dist/jquery.min.js"></script>
-<script>
-    $(function() {
-        $("#form").on("submit", function(e) {
-            e.preventDefault();
-
-            $.ajax({
-                url: "/register",
-                data: $(this).serialize(),
-                type: "post",
-                dataType: "json",
-                success: function(results) {
-                    if (results.err_code === 0) {
-                        location.href = '/login';
-                    } else {
-                        alert(results.msg);
-                    }
-                }
-            })
-        })
-    })
-</script>
