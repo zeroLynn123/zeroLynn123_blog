@@ -40,7 +40,6 @@ module.exports = {
         var sqlStr = 'select articles.*, users.nickname from articles left join users on articles.authorId=users.id order by ctime desc LIMIT ?, ?; select count(*) AS totalCount from articles;';
         connection.query(sqlStr, [offset, pageSize], (err, results) => {
             if (err) return callback(err);
-            console.log(results);
             // 循环文章列表处理时间
             results[0].forEach(item => {
                 item.ctime = moment(item.ctime).fromNow();

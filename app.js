@@ -40,6 +40,6 @@ fs.readdir(path.join(__dirname, './router'), (err, filenames) => {
     });
 });
 
-app.listen(3000, function() {
-    console.log('http://127.0.0.1:3000');
+app.listen(6060, function() {
+    console.log('http://127.0.0.1:6060');
 });
